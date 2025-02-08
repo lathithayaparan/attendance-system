@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    background-color: #0033A0;
+    color: white;
+    padding: 15px;
+    margin: 0;
+}
+
+h2 {
+    margin-top: 10px;
+    color: #00247D;
+}
+
+.login-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.college-image {
+    width: 50%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.login-form {
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 300px;
+    text-align: center;
+}
+
+.user-icon {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #0033A0;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0033A0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #00247D;
+}
+
+p {
+    margin-top: 10px;
+}
+
+a {
+    color: #0033A0;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
