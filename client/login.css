@@ -86,3 +86,23 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+.school-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.school-logo {
+    width: 80px;  /* Adjust size */
+    height: 80px;
+    border-radius: 50%;  /* Circular border */
+    border: 3px solid #0000FF;  /* Blue border */
+}
+
+h2 {
+    margin: 0;
+    color: #000080;
+}
