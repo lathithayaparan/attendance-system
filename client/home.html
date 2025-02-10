@@ -3,15 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home - Attendance System</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="home.css">
 </head>
 <body>
-    <div class="home-container">
-        <h2>Welcome, <span id="username"></span>!</h2>
-        <button onclick="logout()">Logout</button>
-    </div>
+    <header class="header">
+        <h1>Attendance Management System</h1>
+    </header>
+    
+    <main class="container">
+        <button class="logout-btn" id="logoutBtn">Logout</button>
+        <h2>Welcome, <span id="username">User</span>!</h2>
+        
+        <section class="form-container">
+            <div class="form-header">
+                <h3>Add New Student</h3>
+            </div>
+        
+            <form id="student-form">
+                <div class="form-group">
+                    <input type="text" id="student-name" placeholder="Student Name" required>
+                    <input type="text" id="student-id" placeholder="Student ID" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="class" placeholder="Class" required>
+                    <input type="text" id="contact" placeholder="Contact Number" required>
+                </div>
+                <div class="button-container">
+                    <button class="button" type="submit">Add Student</button>
+                </div>
+            </form>
+        </section>
+        
+        <section class="table-container">
+            <div class="table-header">
+                <h3>Mark Attendance</h3>
+                <button class="button check-record">Check Record</button>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Name</th>
+                        <th>Student ID</th>
+                        <th>Class</th>
+                        <th>Attendance</th>
+                    </tr>
+                </thead>
+                <tbody id="attendance-table">
+                    <!-- Student records will be added here -->
+                </tbody>
+            </table>
+        </section>
+    </main>
 
-    <script src="script.js"></script>
+    <script src="home.js"></script>
 </body>
 </html>

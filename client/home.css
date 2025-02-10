@@ -1,0 +1,173 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Header Section - Official Blue */
+.header {
+    background-color: #0033A0; 
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    font-size: 30px;  
+    font-weight: bold;
+    padding: 15px;
+}
+
+/* Header Title */
+.header h1 {
+    margin: 0;
+    font-size: 28px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Logout Button */
+.logout-btn {
+    position: absolute;
+    right: 100px;
+    background-color: white;
+    color: #0033A0;
+    border: 2px solid #0033A0;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.logout-btn:hover {
+    background-color: #0033A0;
+    color: white;
+}
+
+/* Main Content */
+.container {
+    padding: 20px;
+}
+
+/* Buttons */
+.button {
+    background-color: #0033A0;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #000080;
+}
+
+/* Form Section */
+.form-container {
+    background: rgb(201, 211, 241);
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 50%;
+    margin: 20px auto;
+    text-align: left;
+}
+
+/* Form Groups - To Keep Inputs Side by Side with Small Spacing */
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px; /* Small spacing between input fields */
+    margin-bottom: 10px;
+}
+
+/* Input Fields */
+.form-container input {
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #0033A0;
+    border-radius: 5px;
+}
+
+/* Full Width for Address Field */
+.form-group:last-child input {
+    width: 100%;
+}
+
+/* Centering Add Student Button */
+.button-container {
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* Table Section */
+.table-container {
+    margin: 20px auto;
+    width: 90%;
+}
+
+/* Table Header - Aligning Check Record Button */
+.table-header {
+    display: flex;
+    justify-content: space-between; /* Align title left and button right */
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Check Record Button */
+.check-record {
+    background-color: #0033A0;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.check-record:hover {
+    background-color: #000080;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #ececf0;
+    color: rgb(26, 24, 24);
+}
+
+/* Attendance Buttons */
+.attendance-btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.present {
+    background-color: green;
+    color: white;
+}
+
+.absent {
+    background-color: red;
+    color: white;
+}

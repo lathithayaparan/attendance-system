@@ -12,7 +12,7 @@
 
         <!-- School Logo with Name -->
         <div class="school-header">
-            <img src="asserts/logo.png"  alt="School Logo" class="school-logo">
+            <img src="asserts/logo.png" alt="School Logo" class="school-logo">
             <h2>RIMBERIO TECHNICAL SCHOOL</h2>
         </div>
 
@@ -22,9 +22,9 @@
                 <img src="asserts/profile.png" alt="User Icon" class="user-icon">
                 
                 <!-- Login Form -->
-                <form onsubmit="return validateLogin(event);">
-                    <input type="text" id="userId" placeholder="User ID" required>
-                    <input type="password" id="password" placeholder="Password" required>
+                <form id="login-form">
+                    <input type="text" id="userId" placeholder="User ID (e.g., 1234A)" required>
+                    <input type="password" id="password" placeholder="Password (8 characters)" required>
                     <button type="submit">Login</button>
                 </form>
             </div>
@@ -32,11 +32,11 @@
     </div>
 
     <script>
-        function validateLogin(event) {
+        document.getElementById("login-form").addEventListener("submit", function(event) {
             event.preventDefault();  // Prevents page refresh
 
-            let userId = document.getElementById("userId").value;
-            let password = document.getElementById("password").value;
+            let userId = document.getElementById("userId").value.trim();
+            let password = document.getElementById("password").value.trim();
 
             // Regular expressions for validation
             let userIdPattern = /^[0-9]{4}[A-Za-z]$/;  // 4 numbers + 1 letter
@@ -44,19 +44,20 @@
 
             if (!userIdPattern.test(userId)) {
                 alert("User ID must be 4 numbers followed by a letter (e.g., 1234A).");
-                return false;
+                return;
             }
 
             if (!passwordPattern.test(password)) {
                 alert("Password must be exactly 8 characters long.");
-                return false;
+                return;
             }
 
-            alert("Login successful!");
+            // Store user ID in localStorage for session management
+            localStorage.setItem("loggedInUser", userId);
+
+            // Redirect to home page
             window.location.href = "home.html";
-            return true;
-            
-        }
+        });
     </script>
 </body>
 </html>
