@@ -1,59 +1,124 @@
-// Retrieve the logged-in username from localStorage
 document.addEventListener("DOMContentLoaded", function () {
     let loggedInUser = localStorage.getItem("loggedInUser");
 
-    // If no user is logged in, redirect to login page
     if (!loggedInUser) {
         window.location.href = "login.html";
     } else {
-        // Display the username in the welcome message
         document.getElementById("username").textContent = loggedInUser;
     }
+
+    let today = new Date().toISOString().split("T")[0];
+    document.getElementById("attendance-date").value = today;
+    loadStudents(today);
 });
 
-// Logout Function - Clears user data and redirects to login page
 document.getElementById("logoutBtn").addEventListener("click", function () {
-    localStorage.removeItem("loggedInUser"); // Remove user session
-    window.location.href = "login.html"; // Redirect to login page
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "login.html";
 });
 
-// Add Student Functionality
+document.getElementById("attendance-date").addEventListener("change", function () {
+    let selectedDate = this.value;
+    loadStudents(selectedDate);
+});
+
 document.getElementById("student-form").addEventListener("submit", function (event) {
     event.preventDefault();
 
-    let studentName = document.getElementById("student-name").value;
-    let studentID = document.getElementById("student-id").value;
-    let studentClass = document.getElementById("class").value;
-    let contact = document.getElementById("contact").value;
+    let studentName = document.getElementById("student-name").value.trim();
+    let studentID = document.getElementById("student-id").value.trim();
+    let studentClass = document.getElementById("class").value.trim();
+    let contact = document.getElementById("contact").value.trim();
 
-    if (!studentName || !studentID || !studentClass || !contact) {
-        alert("Please fill in all fields.");
+    let studentList = JSON.parse(localStorage.getItem("students")) || [];
+
+    if (studentList.some(student => student.id === studentID)) {
+        alert("This student is already added.");
         return;
     }
 
-    let table = document.getElementById("attendance-table");
-    let rowCount = table.rows.length;
-    let row = table.insertRow();
+    studentList.push({ name: studentName, id: studentID, class: studentClass, contact: contact });
+    localStorage.setItem("students", JSON.stringify(studentList));
 
-    row.innerHTML = `
-        <td>${rowCount + 1}</td>
-        <td>${studentName}</td>
-        <td>${studentID}</td>
-        <td>${studentClass}</td>
-        <td>
-            <button class="attendance-btn present" onclick="markAttendance(this, 'Present')">Present</button>
-            <button class="attendance-btn absent" onclick="markAttendance(this, 'Absent')">Absent</button>
-        </td>
-    `;
-
+    alert("Student added successfully!");
     document.getElementById("student-form").reset();
+
+    let selectedDate = document.getElementById("attendance-date").value;
+    loadStudents(selectedDate);
 });
 
-// Mark Attendance Function
-function markAttendance(button, status) {
-    let row = button.parentElement.parentElement;
-    let buttons = row.querySelectorAll(".attendance-btn");
+function loadStudents(date) {
+    let table = document.getElementById("attendance-table");
+    let studentList = JSON.parse(localStorage.getItem("students")) || [];
+    let attendanceRecords = JSON.parse(localStorage.getItem("attendanceRecords")) || {};
 
-    buttons.forEach(btn => btn.disabled = false);
-    button.disabled = true;
+    let attendanceForDate = attendanceRecords[date] || {};
+
+    table.innerHTML = "";
+
+    studentList.forEach((student, index) => {
+        let attendanceStatus = attendanceForDate[student.id] || "";
+
+        let row = table.insertRow();
+        let attendanceCell = document.createElement("td");
+
+        if (attendanceStatus) {
+            // If already marked, display status with color
+            let statusSpan = document.createElement("span");
+            statusSpan.textContent = attendanceStatus;
+            statusSpan.classList.add("attendance-status");
+
+            if (attendanceStatus === "Present") {
+                statusSpan.classList.add("status-present");
+            } else if (attendanceStatus === "Absent") {
+                statusSpan.classList.add("status-absent");
+            }
+
+            attendanceCell.appendChild(statusSpan);
+        } else {
+            // If not marked, show buttons
+            let presentBtn = document.createElement("button");
+            presentBtn.textContent = "Present";
+            presentBtn.classList.add("attendance-btn", "present");
+            presentBtn.onclick = () => confirmAndMarkAttendance(student.id, date, "Present");
+
+            let absentBtn = document.createElement("button");
+            absentBtn.textContent = "Absent";
+            absentBtn.classList.add("attendance-btn", "absent");
+            absentBtn.onclick = () => confirmAndMarkAttendance(student.id, date, "Absent");
+
+            attendanceCell.appendChild(presentBtn);
+            attendanceCell.appendChild(absentBtn);
+        }
+
+        row.innerHTML = `
+            <td>${index + 1}</td>
+            <td>${student.name}</td>
+            <td>${student.id}</td>
+            <td>${student.class}</td>
+        `;
+
+        row.appendChild(attendanceCell);
+        table.appendChild(row);
+    });
+}
+
+function confirmAndMarkAttendance(studentID, date, status) {
+    let confirmation = confirm("Are you sure!\nConfirm once before making attendance");
+    if (confirmation) {
+        markAttendance(studentID, date, status);
+    }
+}
+
+function markAttendance(studentID, date, status) {
+    let attendanceRecords = JSON.parse(localStorage.getItem("attendanceRecords")) || {};
+
+    if (!attendanceRecords[date]) {
+        attendanceRecords[date] = {};
+    }
+
+    attendanceRecords[date][studentID] = status;
+    localStorage.setItem("attendanceRecords", JSON.stringify(attendanceRecords));
+
+    loadStudents(date);
 }

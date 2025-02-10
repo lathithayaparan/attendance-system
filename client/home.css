@@ -7,20 +7,17 @@ body {
     text-align: center;
 }
 
-/* Header Section - Official Blue */
+/* Header Section */
 .header {
     background-color: #0033A0; 
     color: white;
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-family: 'Arial', sans-serif;
-    font-size: 30px;  
+    justify-content: center; 
     font-weight: bold;
     padding: 15px;
 }
 
-/* Header Title */
 .header h1 {
     margin: 0;
     font-size: 28px;
@@ -79,11 +76,11 @@ body {
     text-align: left;
 }
 
-/* Form Groups - To Keep Inputs Side by Side with Small Spacing */
+/* Form Groups */
 .form-group {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Small spacing between input fields */
+    gap: 10px;
     margin-bottom: 10px;
 }
 
@@ -95,7 +92,7 @@ body {
     border-radius: 5px;
 }
 
-/* Full Width for Address Field */
+/* Full Width for Last Input Field */
 .form-group:last-child input {
     width: 100%;
 }
@@ -112,12 +109,21 @@ body {
     width: 90%;
 }
 
-/* Table Header - Aligning Check Record Button */
+/* Table Header */
 .table-header {
     display: flex;
-    justify-content: space-between; /* Align title left and button right */
+    justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+}
+
+/* Date Picker Styling */
+.date-picker {
+    font-size: 16px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-left: 15px;
 }
 
 /* Check Record Button */
@@ -156,18 +162,53 @@ th {
 
 /* Attendance Buttons */
 .attendance-btn {
-    padding: 5px 10px;
+    padding: 8px 12px;
     border: none;
     border-radius: 5px;
+    font-size: 14px;
     cursor: pointer;
+    font-weight: bold;
+    margin: 2px;
+    transition: background 0.3s;
 }
 
-.present {
-    background-color: green;
+/* Present Button */
+.attendance-btn.present {
+    background-color: #28a745;
     color: white;
 }
 
-.absent {
-    background-color: red;
+.attendance-btn.present:hover {
+    background-color: #218838;
+}
+
+/* Absent Button */
+.attendance-btn.absent {
+    background-color: #dc3545;
+    color: white;
+}
+
+.attendance-btn.absent:hover {
+    background-color: #c82333;
+}
+
+/* Attendance Status */
+.attendance-status {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Present Status */
+.status-present {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Absent Status */
+.status-absent {
+    background-color: #dc3545;
     color: white;
 }

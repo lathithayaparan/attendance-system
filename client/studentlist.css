@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* Main Header */
+.header {
+    background-color: #0033A0;
+    color: white;
+    padding: 1px;  /* Reduced padding */
+    font-size: 13px; /* Reduced font size */
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Date Picker Section */
+.date-container {
+    margin: 20px;
+}
+
+.date-container label {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#attendance-date {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Load Button */
+.date-container button {
+    background-color: #0033A0;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.date-container button:hover {
+    background-color: #000080;
+}
+
+/* Table Styling */
+.container {
+    padding: 20px;
+}
+
+.table-container {
+    margin: 20px auto;
+    width: 80%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background-color: #ececf0;
+    color: black;
+}
+
+/* Back to Home Button */
+.button-container {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+button {
+    background-color: #0033A0;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #000080;
+}

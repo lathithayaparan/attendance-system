@@ -38,7 +38,8 @@
         <section class="table-container">
             <div class="table-header">
                 <h3>Mark Attendance</h3>
-                <button class="button check-record">Check Record</button>
+                <input type="date" id="attendance-date" class="date-picker">
+                <button class="button check-record" onclick="viewStudentList()">Check Record</button>
             </div>
             
             <table>
@@ -59,5 +60,11 @@
     </main>
 
     <script src="home.js"></script>
+    <script>
+        function viewStudentList() {
+            let selectedDate = document.getElementById("attendance-date").value;
+            window.location.href = `studentlist.html?date=${selectedDate}`;
+        }
+    </script>
 </body>
 </html>

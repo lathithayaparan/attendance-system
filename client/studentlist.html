@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <link rel="stylesheet" href="studentlist.css">
+</head>
+<body>
+
+    <header class="header">
+        <h1>Attendance Management System</h1>
+    </header>
+
+    <div class="date-container">
+        <label for="attendance-date">Select Date: </label>
+        <input type="date" id="attendance-date">
+        <button onclick="loadStudentList()">Load</button>
+    </div>
+
+    <main class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Name</th>
+                    <th>Student ID</th>
+                    <th>Class</th>
+                    <th>Contact</th>
+                    <th>Attendance</th>
+                </tr>
+            </thead>
+            <tbody id="student-list"></tbody>
+        </table>
+    </main>
+
+    <button onclick="goBack()">Back to Home</button>
+
+    <script src="studentlist.js"></script>
+</body>
+</html>
