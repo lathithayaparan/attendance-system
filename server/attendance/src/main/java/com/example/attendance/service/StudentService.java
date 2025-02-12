@@ -16,4 +16,7 @@ public class StudentService {
     public  void addStudentById(Student student) {
         studentRepository.save(student);
     }
+
+    public void addStudent(Student student) {
+    }
 }

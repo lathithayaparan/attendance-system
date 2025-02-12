@@ -17,4 +17,8 @@ public class AttendanceService {
     public List<Attendance> getAttendanceByDate(String date) {
         return attendanceRepository.findByDate(date);
     }
+
+    public void markAttendance(Attendance attendance) {
+
+    }
 }
